@@ -11,12 +11,12 @@
 		291ABC0F040308DAB2D736790B887341 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		2A54103B8771E2FEE965C68CDF20906C /* CKVersion-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B76175A53AE6E781B41A1709C7976 /* CKVersion-dummy.m */; };
 		2CBE0D324C2B9413C943348B5E04ABF0 /* Pods-CKVersion_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B82F7398E2032DFB2158C690E2F2C2C /* Pods-CKVersion_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7ED038EFDC4B5BE2601C4FCA4563427E /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9EFF402E68D64B16890762B539A47B /* ReplaceMe.swift */; };
 		901DD136A184C74CECD806CCA877233D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		960249C85E86FA77BC11FC5282B894DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		9EA48EFB3815EEC7FADE33BD055C26D3 /* Pods-CKVersion_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D374B07C24C670CE93608032F16772BC /* Pods-CKVersion_Tests-dummy.m */; };
 		B25189A7C7D4F29ABEF8BE9AD80D9DF8 /* Pods-CKVersion_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A2B1DD764F1325021725AAA2A3464C78 /* Pods-CKVersion_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F139969C9D56B0DFA6BF5B1C00AAB54C /* Pods-CKVersion_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 304E39B2D3FC70C1EE34C3AB6F9B07BE /* Pods-CKVersion_Example-dummy.m */; };
+		FCC511932A815A5500438524 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC511922A815A5500438524 /* Version.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +49,6 @@
 		55C85CF8016C9414904F50B0C0F3AECA /* Pods-CKVersion_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CKVersion_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		599BA7AEF0635A96F052548A3DB1FF6F /* Pods-CKVersion_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CKVersion_Tests-Info.plist"; sourceTree = "<group>"; };
 		5D53E673109EF435A53A9BE2B365FFA6 /* Pods-CKVersion_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CKVersion_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		5F9EFF402E68D64B16890762B539A47B /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = CKVersion/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
 		64335DE4D370872D696E4D1A10BDCC38 /* Pods-CKVersion_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CKVersion_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		64A722E063EEA2E79FE8A7DDDB8FE9D2 /* CKVersion-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CKVersion-prefix.pch"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -70,6 +69,7 @@
 		D374B07C24C670CE93608032F16772BC /* Pods-CKVersion_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CKVersion_Tests-dummy.m"; sourceTree = "<group>"; };
 		F4D14FC1947C1F36E713F0753F93BF3D /* CKVersion-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "CKVersion-Info.plist"; sourceTree = "<group>"; };
 		F4F7A62DD1AA8BC6D5970114BE5D174C /* CKVersion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CKVersion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCC511922A815A5500438524 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Version.swift; path = CKVersion/Classes/Version.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,7 +169,7 @@
 		BC680F059A02306998C7F60D0CB5DA3E /* CKVersion */ = {
 			isa = PBXGroup;
 			children = (
-				5F9EFF402E68D64B16890762B539A47B /* ReplaceMe.swift */,
+				FCC511922A815A5500438524 /* Version.swift */,
 				5E1175DF6192FA476887AB0A5ED309F0 /* Pod */,
 				AFBE8C5282067A20DD7BF1302913C69D /* Support Files */,
 			);
@@ -384,7 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A54103B8771E2FEE965C68CDF20906C /* CKVersion-dummy.m in Sources */,
-				7ED038EFDC4B5BE2601C4FCA4563427E /* ReplaceMe.swift in Sources */,
+				FCC511932A815A5500438524 /* Version.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

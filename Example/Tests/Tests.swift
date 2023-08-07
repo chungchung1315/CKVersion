@@ -3,26 +3,65 @@ import CKVersion
 
 class Tests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func test_version_init() {
+        let version = Version.from(string: "1.2.3")
+        XCTAssertEqual(version!.major, 1)
+        XCTAssertEqual(version!.minor, 2)
+        XCTAssertEqual(version!.patch, 3)
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+    func test_version_init_zero() {
+        let version = Version.from(string: "0.0.0")
+        XCTAssertEqual(version!.major, 0)
+        XCTAssertEqual(version!.minor, 0)
+        XCTAssertEqual(version!.patch, 0)
+    }
+
+    func test_version_init_zero_padding() {
+        let version = Version.from(string: "10.02.003")
+        XCTAssertEqual(version!.major, 10)
+        XCTAssertEqual(version!.minor, 2)
+        XCTAssertEqual(version!.patch, 3)
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    func test_version_fail() {
+        let version1 = Version.from(string: "1")
+        let version2 = Version.from(string: "1.2")
+        let version3 = Version.from(string: "1.2.3.4")
+        let version4 = Version.from(string: "a")
+        let version5 = Version.from(string: "a.b.c")
+        let version6 = Version.from(string: "12.aur.!@")
+        XCTAssertNil(version1)
+        XCTAssertNil(version2)
+        XCTAssertNil(version3)
+        XCTAssertNil(version4)
+        XCTAssertNil(version5)
+        XCTAssertNil(version6)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure() {
-            // Put the code you want to measure the time of here.
-        }
+    func test_version_compare() {
+        let version1 = Version.from(string: "1.2.3")
+        let version2 = Version.from(string: "1.2.3")
+        XCTAssertEqual(version1, version2)
     }
     
+    func test_version_compare_equal() {
+        let version1 = Version.from(string: "1.2.3")
+        let version2 = Version.from(string: "01.02.3")
+        XCTAssertEqual(version1, version2)
+    }
+
+    func test_version_compare_greater() {
+        let version1 = Version.from(string: "1.2.3")!
+        let version2 = Version.from(string: "1.2.4")!
+        XCTAssertTrue(version1 < version2)
+        
+        let version3 = Version.from(string: "1.3.3")!
+        let version4 = Version.from(string: "1.2.3")!
+        XCTAssertTrue(version3 > version4)
+        
+        let version5 = Version.from(string: "2.2.3")!
+        let version6 = Version.from(string: "1.2.3")!
+        XCTAssertTrue(version5 > version6)
+    }
 }
