@@ -1,0 +1,6 @@
+framework module CKVersion {
+  umbrella header "CKVersion-umbrella.h"
+
+  export *
+  module * { export * }
+}

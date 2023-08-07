@@ -1,0 +1,16 @@
+PODS:
+  - CKVersion (0.1.0)
+
+DEPENDENCIES:
+  - CKVersion (from `../`)
+
+EXTERNAL SOURCES:
+  CKVersion:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CKVersion: bd793ac0f3fdacab9e1a975b325cbd3958e19b8e
+
+PODFILE CHECKSUM: bcd1cf7af46fb2e5c609a0563a15349979b77342
+
+COCOAPODS: 1.12.1

@@ -1,0 +1,22 @@
+{
+  "name": "CKVersion",
+  "version": "0.1.0",
+  "summary": "A short description of CKVersion.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/chungchung1315/CKVersion",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "chungchung1315": "chungchung1315@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/chungchung1315/CKVersion.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "CKVersion/Classes/**/*"
+}
