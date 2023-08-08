@@ -17,6 +17,7 @@
 		B25189A7C7D4F29ABEF8BE9AD80D9DF8 /* Pods-CKVersion_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A2B1DD764F1325021725AAA2A3464C78 /* Pods-CKVersion_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F139969C9D56B0DFA6BF5B1C00AAB54C /* Pods-CKVersion_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 304E39B2D3FC70C1EE34C3AB6F9B07BE /* Pods-CKVersion_Example-dummy.m */; };
 		FCC511932A815A5500438524 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC511922A815A5500438524 /* Version.swift */; };
+		FCC5124A2A8299C400438524 /* CKVersionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC512492A8299C400438524 /* CKVersionError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		F4D14FC1947C1F36E713F0753F93BF3D /* CKVersion-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "CKVersion-Info.plist"; sourceTree = "<group>"; };
 		F4F7A62DD1AA8BC6D5970114BE5D174C /* CKVersion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CKVersion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCC511922A815A5500438524 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Version.swift; path = CKVersion/Classes/Version.swift; sourceTree = "<group>"; };
+		FCC512492A8299C400438524 /* CKVersionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CKVersionError.swift; path = CKVersion/Classes/CKVersionError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				FCC511922A815A5500438524 /* Version.swift */,
+				FCC512492A8299C400438524 /* CKVersionError.swift */,
 				5E1175DF6192FA476887AB0A5ED309F0 /* Pod */,
 				AFBE8C5282067A20DD7BF1302913C69D /* Support Files */,
 			);
@@ -385,6 +388,7 @@
 			files = (
 				2A54103B8771E2FEE965C68CDF20906C /* CKVersion-dummy.m in Sources */,
 				FCC511932A815A5500438524 /* Version.swift in Sources */,
+				FCC5124A2A8299C400438524 /* CKVersionError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,7 +434,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -561,7 +565,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";

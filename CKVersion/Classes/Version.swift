@@ -41,8 +41,17 @@ public struct Version: Equatable, Comparable {
         return Version.init(major, minor, patch)
     }
     
+    /// Get current app local version. nil if the version doesn't follow the format, "1.0.0".
+    public static func localAppVersion() -> Version? {
+        guard let info = Bundle.main.infoDictionary,
+              let version = info["CFBundleShortVersionString"] as? String else {
+            return nil
+        }
+        return Version.init(string: version)
+    }
+    
     /// String representation. e.g. "1.0.0"
-    var toString: String {
+    public var toString: String {
         [major, minor, patch].map { String($0) }.joined(separator: ".")
     }
     
@@ -72,5 +81,46 @@ public struct Version: Equatable, Comparable {
         }
         
         return false
+    }
+}
+
+public extension Version {
+    
+    /// Fetch App Store version of this app or an app of the specified bundleIdentifier.
+    static func fetchAppStoreVersion(bundleIdentifier: String? = Bundle.main.bundleIdentifier, completion: @escaping (_ version: Version?, _ error: Error?) -> Void) {
+        
+        guard let identifier = bundleIdentifier,
+              let url = URL(string: "https://itunes.apple.com/lookup?bundleId=\(identifier)") else {
+            completion(nil, CKVersionError.appStoreVersionFetchError(nil))
+            return
+        }
+        
+        let session = URLSession(configuration: .ephemeral)
+        let task = session.dataTask(with: url) { data, response, error in
+            if let error {
+                completion(nil, CKVersionError.appStoreVersionFetchError(error))
+                return
+            }
+            
+            guard let data else {
+                completion(nil, CKVersionError.appStoreVersionFetchError(nil))
+                return
+            }
+            
+            guard let json = try? JSONSerialization.jsonObject(with: data, options: [.fragmentsAllowed]) as? [String: Any],
+                  let result = (json["results"] as? [Any])?.first as? [String: Any],
+                  let version = result["version"] as? String else {
+                completion(nil, CKVersionError.appStoreVersionFetchError(nil))
+                return
+            }
+            
+            guard let appStoreVersion = Version.from(string: version) else {
+                completion(nil, CKVersionError.invalidFormat)
+                return
+            }
+            completion(appStoreVersion, nil)
+        }
+        
+        task.resume()
     }
 }

@@ -7,18 +7,24 @@
 //
 
 import UIKit
+import CKVersion
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        print(Version.localAppVersion() ?? "nil")
+        
+        Version.fetchAppStoreVersion(bundleIdentifier: "com.yahoo.frontpage", completion: { version, error in
+            
+            if let error {
+                print(error)
+            }
+            
+            print(version ?? "nil")
+            print(error ?? "nil")
+        })
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
 
