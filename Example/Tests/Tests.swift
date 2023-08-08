@@ -64,4 +64,9 @@ class Tests: XCTestCase {
         let version6 = Version.from(string: "1.2.3")!
         XCTAssertTrue(version5 > version6)
     }
+    
+    func test_version_to_string() {
+        let version = Version.from(2, 10, 1)
+        XCTAssertEqual(version?.toString, "2.10.1")
+    }
 }
