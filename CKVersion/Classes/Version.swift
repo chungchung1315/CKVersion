@@ -123,4 +123,25 @@ public extension Version {
         
         task.resume()
     }
+    
+    @available(iOS 13.0, *)
+    static func fetchAppStoreVersion(bundleIdentifier: String? = Bundle.main.bundleIdentifier) async throws -> Version {
+        guard let bundleIdentifier else {
+            throw CKVersionError.failToFindBundleIdentifier
+        }
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            fetchAppStoreVersion(bundleIdentifier: bundleIdentifier, completion: { version, error in
+                if let error {
+                    continuation.resume(throwing: error)
+                } else {
+                    if let version {
+                        continuation.resume(returning: version)
+                    } else {
+                        continuation.resume(throwing: CKVersionError.appStoreVersionFetchError(nil))
+                    }
+                }
+            })
+        }
+    }
 }
