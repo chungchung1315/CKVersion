@@ -5,6 +5,8 @@
 //  Created by Marcel on 2023/08/08.
 //
 
+import Foundation
+
 public struct Version: Equatable, Comparable {
     public let major: UInt
     public let minor: UInt
