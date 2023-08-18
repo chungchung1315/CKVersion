@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("localAppVersion: ", Version.localAppVersion() ?? "nil")
+        print("localAppVersion: ", try! Version.localAppVersion())
         
         Version.fetchAppStoreVersion(bundleIdentifier: "com.yahoo.frontpage", completion: { version, error in
             

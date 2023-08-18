@@ -12,9 +12,11 @@ public struct Version: Equatable, Comparable {
     public let minor: UInt
     public let patch: UInt
     
-    private init?(string: String) {
+    private init(string: String) throws {
         var numbers = Array(string.split(separator: "."))
-        guard !numbers.isEmpty, numbers.count == 3 else { return nil }
+        guard !numbers.isEmpty, numbers.count == 3 else {
+            throw CKVersionError.invalidFormat
+        }
         
         if let major = UInt(numbers.removeFirst()),
            let minor = UInt(numbers.removeFirst()),
@@ -23,7 +25,7 @@ public struct Version: Equatable, Comparable {
             self.minor = minor
             self.patch = patch
         } else {
-            return nil
+            throw CKVersionError.invalidFormat
         }
     }
     
@@ -34,8 +36,8 @@ public struct Version: Equatable, Comparable {
     }
     
     /// Version string example: "1.0.0". It must have three parts.
-    public static func from(string: String) -> Version? {
-        return Version.init(string: string)
+    public static func from(string: String) throws -> Version {
+        return try Version.init(string: string)
     }
     
     /// Input major, minor, and patch version.
@@ -44,12 +46,12 @@ public struct Version: Equatable, Comparable {
     }
     
     /// Get current app local version. nil if the version doesn't follow the format, "1.0.0".
-    public static func localAppVersion() -> Version? {
+    public static func localAppVersion() throws -> Version {
         guard let info = Bundle.main.infoDictionary,
               let version = info["CFBundleShortVersionString"] as? String else {
-            return nil
+            throw CKVersionError.failToFindBundleIdentifier
         }
-        return Version.init(string: version)
+        return try Version.init(string: version)
     }
     
     /// String representation. e.g. "1.0.0"
@@ -89,9 +91,11 @@ public struct Version: Equatable, Comparable {
 public extension Version {
     
     /// Fetch App Store version of this app or an app of the specified bundleIdentifier.
-    static func fetchAppStoreVersion(bundleIdentifier: String? = Bundle.main.bundleIdentifier, completion: @escaping (_ version: Version?, _ error: Error?) -> Void) {
+    static func fetchAppStoreVersion(bundleIdentifier: String? = nil, completion: @escaping (_ version: Version?, _ error: Error?) -> Void) {
         
-        guard let identifier = bundleIdentifier,
+        let identifier: String? = bundleIdentifier == nil ? Bundle.main.bundleIdentifier : bundleIdentifier
+        
+        guard let identifier,
               let url = URL(string: "https://itunes.apple.com/lookup?bundleId=\(identifier)") else {
             completion(nil, CKVersionError.appStoreVersionFetchError(nil))
             return
@@ -116,7 +120,7 @@ public extension Version {
                 return
             }
             
-            guard let appStoreVersion = Version.from(string: version) else {
+            guard let appStoreVersion = try? Version.from(string: version) else {
                 completion(nil, CKVersionError.invalidFormat)
                 return
             }
