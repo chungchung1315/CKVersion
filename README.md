@@ -10,7 +10,7 @@ This library provides a version object for semantic versioning which is formatte
 
 It supports only numbers and dots(e.g. "1.0.0"). Not supporting release state like "-beta" suffix.
 
-### Version compare
+### Compare versions
 
 ```swift
 let version1 = Version(1, 0, 0) // init from numbers
@@ -24,22 +24,20 @@ if version1 < version2 { // compare versions
 ### Fetch App Store version
 
 ```swift
+// Using async/await
 Task {
     let version = try await Version.fetchAppStoreVersion()
     print("App Store Version:", version.toString)
 }
 
-Version.fetchAppStoreVersion(bundleIdentifier: Bundle.main.bundleIdentifier!) { version, error in
+// Using completion handler
+Version.fetchAppStoreVersion(bundleIdentifier: Bundle.main.bundleIdentifier!) { version, error in // If bundlerIdentifier is nil or omitted, the main bundle identifier is used.
     if let error { print(error) }
     print("App Store Version:", version.toString)
 }
 ```
 
 A fetchAppStoreVersion method uses App Store API, so the internet connection is needed.
-
-## Example iOS App
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
 
