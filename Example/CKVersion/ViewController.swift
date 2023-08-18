@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         if #available(iOS 13.0, *) {
             Task {
                 let version = try await Version.fetchAppStoreVersion(bundleIdentifier: "com.yahoo.frontpage")
-                print("fetchAppStoreVersion async: ", version)
+                print("fetchAppStoreVersion async: ", version.toString)
             }
         }
     }

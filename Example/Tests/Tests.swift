@@ -16,6 +16,14 @@ class Tests: XCTestCase {
         XCTAssertEqual(version.minor, 0)
         XCTAssertEqual(version.patch, 0)
     }
+    
+    func test_version_init_from_numbers() {
+        let version1 = Version.from(1, 2, 3)
+        let version2 = try! Version.from(string: "1.2.3")
+        let version3 = Version(1, 2, 3)
+        XCTAssertEqual(version1, version2)
+        XCTAssertEqual(version2, version3)
+    }
 
     func test_version_init_zero_padding() {
         let version = try! Version.from(string: "10.02.003")
@@ -61,6 +69,6 @@ class Tests: XCTestCase {
     
     func test_version_to_string() {
         let version = Version.from(2, 10, 1)
-        XCTAssertEqual(version?.toString, "2.10.1")
+        XCTAssertEqual(version.toString, "2.10.1")
     }
 }

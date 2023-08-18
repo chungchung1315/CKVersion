@@ -29,7 +29,7 @@ public struct Version: Equatable, Comparable {
         }
     }
     
-    private init(_ major: UInt, _ minor: UInt, _ patch: UInt) {
+    public init(_ major: UInt, _ minor: UInt, _ patch: UInt) {
         self.major = major
         self.minor = minor
         self.patch = patch
@@ -41,7 +41,7 @@ public struct Version: Equatable, Comparable {
     }
     
     /// Input major, minor, and patch version.
-    public static func from(_ major: UInt, _ minor: UInt, _ patch: UInt) -> Version? {
+    public static func from(_ major: UInt, _ minor: UInt, _ patch: UInt) -> Version {
         return Version.init(major, minor, patch)
     }
     
