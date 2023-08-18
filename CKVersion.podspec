@@ -18,7 +18,8 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+This library provides a version object for semantic versioning which is formatted with "MAJOR.MINOR.PATCH".
+It supports only numbers and dots(e.g. "1.0.0"). Not supporting release state like "-beta" suffix.  
                        DESC
 
   s.homepage         = 'https://github.com/chungchung1315/CKVersion'
